@@ -12,7 +12,7 @@ def main():
         url = shows[show]
         year = current_year()
         week = str("Week " + current_week())
-        save_path = "Users\Owner\Projects\wrek-project\shows\show_data"
+        save_path = "C:/Users/Owner/Projects/wrek-project/shows/show_data"
         complete_path = os.path.join(save_path, year, show_name, week)
 
         with urllib.request.urlopen(url) as response:
