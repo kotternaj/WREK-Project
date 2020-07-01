@@ -10,5 +10,6 @@ def upload_to_gcs(file):
     url = blob.public_url
     print(f"Image URL - {url}")
 
-# if __name__ == '__main__':
-#     upload_to_gcs('C:/Users/Owner/Projects/wrek-project/shows/show_data/2020/Mode 7/Week 27/Sun1800_old.mp3')
+    # gsutil cp -r /show_data gs://wrek-01
+if __name__ == '__main__':
+    upload_to_gcs('show_data/2020/Mode 7/Week 27/Sun1800_old.mp3')

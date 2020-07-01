@@ -22,7 +22,7 @@ def main():
             # split the M3U (playlist) into seperate URLs
             split_urls = html.split('\n')
             print(split_urls)
-            # isolate the mp3 name and use it as the save name
+            # isolate the mp3 name and use it as the file save name
             for urls in split_urls:
                 if urls == '':
                     pass
@@ -30,7 +30,16 @@ def main():
                     sep_urls = urlparse(urls)
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
-                    upload_to_gcs(mp3_filename)
+
+                    # split up the local path in prep for uploading to GCS
+                    filepath = os.path.normpath(complete_path)
+                    filepath = filepath.split(os.sep)
+                    # remove everything up to /showdata/<year>/<show name>/<week>/>
+                    # and then join above items back into a path
+                    del filepath[0:7]
+                    upload_file_path = os.path.join(*filepath)
+
+                    upload_to_gcs(upload_file_path)
 
 def download(urls, mp3_filename, complete_path):
     if os.path.exists(complete_path):
@@ -43,6 +52,7 @@ def download(urls, mp3_filename, complete_path):
         print('Saving file: ', mp3_filename)
         urllib.request.urlretrieve(urls, mp3_filename)
         print('Successfully saved: ', mp3_filename)
+        print(complete_path)
 
     except(ValueError):
         pass

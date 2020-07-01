@@ -1,5 +1,4 @@
 secret_settings.py
-settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -132,5 +131,5 @@ dmypy.json
 .pyre/
 
 tests.py
-shows/show_data/*
-shows/show.py
+show_data/
+show.py
