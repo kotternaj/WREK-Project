@@ -5,6 +5,7 @@ import os, time
 import datetime
 from datetime import date
 from shows import shows
+from upload import upload_to_gcs
 
 def main():
     for show in shows:
@@ -29,6 +30,7 @@ def main():
                     sep_urls = urlparse(urls)
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
+                    upload_to_gcs(mp3_filename)
 
 def download(urls, mp3_filename, complete_path):
     if os.path.exists(complete_path):
@@ -41,6 +43,7 @@ def download(urls, mp3_filename, complete_path):
         print('Saving file: ', mp3_filename)
         urllib.request.urlretrieve(urls, mp3_filename)
         print('Successfully saved: ', mp3_filename)
+
     except(ValueError):
         pass
 
