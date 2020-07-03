@@ -11,10 +11,10 @@ def main():
     for show in shows:
         show_name = str(show)
         url = shows[show]
-        year = current_year()
+        # year = current_year()
         week = str("Week " + current_week())
         save_path = "C:/Users/Owner/Projects/wrek-project/shows/show_data"
-        complete_path = os.path.join(save_path, year, show_name, week)
+        complete_path = os.path.join(save_path, show_name, week)
 
         with urllib.request.urlopen(url) as response:
             html = response.read()
@@ -31,16 +31,6 @@ def main():
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
 
-                    # split up the local path in prep for uploading to GCS
-                    filepath = os.path.normpath(complete_path)
-                    filepath = filepath.split(os.sep)
-                    # remove everything up to /showdata/<year>/<show name>/<week>/>
-                    # and then join above items back into a path
-                    del filepath[0:7]
-                    upload_file_path = os.path.join(*filepath)
-
-                    upload_to_gcs(upload_file_path)
-
 def download(urls, mp3_filename, complete_path):
     if os.path.exists(complete_path):
         print('Directory "%s" already exists' %complete_path)
@@ -49,10 +39,20 @@ def download(urls, mp3_filename, complete_path):
         print('New directory "%s" was created' %complete_path)
     os.chdir(complete_path)
     try:
-        print('Saving file: ', mp3_filename)
+        # print('Saving file: ', mp3_filename)
         urllib.request.urlretrieve(urls, mp3_filename)
         print('Successfully saved: ', mp3_filename)
         print(complete_path)
+        # split up the local path in prep for uploading to GCS
+        filepath  = os.path.join(complete_path)
+        filepath = os.path.normpath(filepath)
+        filepath = filepath.split(os.sep)
+        # remove everything up to /showdata/<show name>/<week>/>
+        # and then join above items back into a path
+        del filepath[0:6]
+        upload_file_path = os.path.join(*filepath).replace("\\","/")
+
+        upload_to_gcs(upload_file_path, mp3_filename)
 
     except(ValueError):
         pass
@@ -64,9 +64,9 @@ def current_week():
     week = str(week_num)
     return week
 
-def current_year():
-    year_ = str(date.today().year)
-    return year_
+# def current_year():
+#     year_ = str(date.today().year)
+#     return year_
 
 if __name__ == '__main__':
     main()
