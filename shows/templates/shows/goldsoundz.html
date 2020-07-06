@@ -1,0 +1,9 @@
+{% extends "shows/base.html" %}
+{% block content %}
+
+<h2>Goldsoundz PAGE</h2>
+{% for week in weeks %}
+<p><a href="{{ week }}" src=''>Week: {{ week }}</a></p>
+{% endfor %}
+
+{% endblock %}

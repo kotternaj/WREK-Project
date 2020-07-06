@@ -1,4 +1,4 @@
-shows = {'Mode 7':'https://www.wrek.org/playlist.php/main/24kbs/current/MODE.m3u',
+shows = {'Mode7':'https://www.wrek.org/playlist.php/main/24kbs/current/MODE.m3u',
          'Goldsoundz':'https://www.wrek.org/playlist.php/main/24kbs/current/GS.m3u',
          # 'WREKage' : 'https://www.wrek.org/playlist.php/main/128kbs/previous/WRKG.m3u',
          # 'Not Just Jazz' : 'https://www.wrek.org/playlist.php/main/24kbs/current/NJJ.m3u',

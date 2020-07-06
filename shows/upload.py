@@ -10,9 +10,8 @@ def upload_to_gcs(filepath, file):
     url = blob.public_url
     print(f"MP3 URL - {url}")
     mp3_url_dict = { file : url }
-    # print(mp3_url_dict)
-    # return(mp3_url_dict)
-    
+    return(mp3_url_dict)
+
 
 if __name__ == '__main__':
     upload_to_gcs('')
