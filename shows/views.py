@@ -7,3 +7,6 @@ def home(request):
     context = {'shows': shows}
     print(shows)
     return render(request, 'shows/home.html', context)
+
+def mode_7(request):
+    return render(request, 'shows/mode_7.html')

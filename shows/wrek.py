@@ -2,10 +2,9 @@ from urllib.parse import urlsplit, urlparse
 import urllib
 import urllib.request
 import os, time
-import datetime
-from datetime import date
+# import datetime
 from shows_dict import shows
-from upload import upload_to_gcs
+from download import download
 
 def main():
     for show in shows:
@@ -31,37 +30,6 @@ def main():
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
 
-def download(urls, mp3_filename, complete_path):
-    if os.path.exists(complete_path):
-        print('Directory "%s" already exists' %complete_path)
-    else:
-        os.makedirs(complete_path)
-        print('New directory "%s" was created' %complete_path)
-    os.chdir(complete_path)
-    try:
-        urllib.request.urlretrieve(urls, mp3_filename)
-        print('Successfully saved: ', mp3_filename)
-        print(complete_path)
-        # split up the local path in prep for uploading to GCS
-        filepath  = os.path.join(complete_path)
-        filepath = os.path.normpath(filepath)
-        filepath = filepath.split(os.sep)
-        # remove everything up to /showdata/<show name>/<week>/>
-        # and then join above items back into a path
-        del filepath[0:6]
-        upload_file_path = os.path.join(*filepath).replace("\\","/")
-
-        upload_to_gcs(upload_file_path, mp3_filename)
-
-    except(ValueError):
-        pass
-
-# determine current week to be used to name the auto-generated dirs
-def current_week():
-    y, m, d = date.today().year, date.today().month, date.today().day
-    week_num = datetime.date(y, m, d).isocalendar()[1]
-    week = str(week_num)
-    return week
 
 if __name__ == '__main__':
     main()
