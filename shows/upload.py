@@ -12,14 +12,7 @@ def upload_to_gcs(filepath, file):
     mp3_url_dict = { file : url }
     # print(mp3_url_dict)
     # return(mp3_url_dict)
-
-def create_file_path():
-	# year = datetime.datetime.now().strftime("%Y")
-	# month = datetime.datetime.now().strftime("%m")
-	file_path = f"/uploads/{year}/{month}"
-	return file_path
-
-
+    
 
 if __name__ == '__main__':
     upload_to_gcs('')

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .shows_dict import shows as sh
-# from .upload import mp3_url_dict
+from .current_week import current_week
 
 def home(request):
     shows = sh
@@ -9,4 +9,8 @@ def home(request):
     return render(request, 'shows/home.html', context)
 
 def mode_7(request):
-    return render(request, 'shows/mode_7.html')
+    # week = str("Week " + current_week())
+    weeks = [i for i in (range(20, current_week() + 1))]
+    # weeks = str(weeks)
+    context = {'weeks': weeks }
+    return render(request, 'shows/mode_7.html', context)
