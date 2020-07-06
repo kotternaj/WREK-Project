@@ -4,7 +4,7 @@ import urllib.request
 import os, time
 import datetime
 from datetime import date
-from shows import shows
+from shows_dict import shows
 from upload import upload_to_gcs
 
 def main():
@@ -39,7 +39,6 @@ def download(urls, mp3_filename, complete_path):
         print('New directory "%s" was created' %complete_path)
     os.chdir(complete_path)
     try:
-        # print('Saving file: ', mp3_filename)
         urllib.request.urlretrieve(urls, mp3_filename)
         print('Successfully saved: ', mp3_filename)
         print(complete_path)
@@ -63,10 +62,6 @@ def current_week():
     week_num = datetime.date(y, m, d).isocalendar()[1]
     week = str(week_num)
     return week
-
-# def current_year():
-#     year_ = str(date.today().year)
-#     return year_
 
 if __name__ == '__main__':
     main()
