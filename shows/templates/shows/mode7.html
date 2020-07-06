@@ -2,6 +2,11 @@
 {% block content %}
 
 <h2>MODE 7 PAGE</h2>
+{% for key, value in mp3_url_dict %}
+<p>{{ key }}</p>
+<p>{{ value }}</p>
+{% endfor %}
+
 {% for week in weeks %}
 <p><a href="{{ week }}" src=''>Week: {{ week }}</a></p>
 {% endfor %}

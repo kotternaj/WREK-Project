@@ -18,13 +18,12 @@ def download(urls, mp3_filename, complete_path):
         filepath  = os.path.join(complete_path)
         filepath = os.path.normpath(filepath)
         filepath = filepath.split(os.sep)
-        # remove everything up to /showdata/<show name>/<week>/>
+        # remove everything up to /<show name>/<week>/>
         # and then join above items back into a path
-        del filepath[0:6]
+        del filepath[0:7]
         upload_file_path = os.path.join(*filepath).replace("\\","/")
 
-        mp3_url_dict = upload_to_gcs(upload_file_path, mp3_filename)
-        print(mp3_url_dict)
+        upload_to_gcs(upload_file_path, mp3_filename)
 
     except(ValueError):
         pass
