@@ -1,4 +1,5 @@
 secret_settings.py
+playlist.m3u
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
