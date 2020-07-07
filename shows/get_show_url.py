@@ -29,9 +29,8 @@ def get_mode7_urls():
         # and then join above items back into a path
         del filepath[0:3]
         if filepath[0] == 'Mode7':
-            mode7_urls.append(url)
-    print('Webpage is hitting this function')
-    print(mode7_urls)
+            mode7_urls.append(url)    
+    return(mode7_urls)
         # upload_file_path = os.path.join(*filepath).replace("\\","/")
 
 
