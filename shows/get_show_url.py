@@ -21,6 +21,8 @@ def list_blobs(bucket_name):
 def get_mode7_urls():
     public_urls = list_blobs('wrek-01')
     mode7_urls = []
+    week = []
+    filename = []
     for url in public_urls:
         filepath  = os.path.join(url)
         filepath = os.path.normpath(filepath)
@@ -28,9 +30,13 @@ def get_mode7_urls():
         # remove everything up to /<show name>/<week>/>
         # and then join above items back into a path
         del filepath[0:3]
+        week = filepath[1]
+        print(filepath)
         if filepath[0] == 'Mode7':
-            mode7_urls.append(url)    
-    return(mode7_urls)
+            filename.append(filepath[2])
+            print(filename)
+            mode7_urls.append(url)
+    return(mode7_urls, week, filename)
         # upload_file_path = os.path.join(*filepath).replace("\\","/")
 
 

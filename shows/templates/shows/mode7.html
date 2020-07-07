@@ -3,13 +3,12 @@
 
 <h2>MODE 7 PAGE</h2>
 
-{% for week in weeks %}
-<p>Week: {{ week }}
-  {% for url in urls %}
-  <a href="{{ url }}" src="{{ url }}">Mode 7</a>
-  {% endfor %}
+
+<p>{{ week }}:
+  <a href="{{ url }}" src="{{ url }}">{{ filename1 }}</a>
+  <a href="{{ url }}" src="{{ url }}">{{ filename2 }}</a>  
 </p>
-{% endfor %}
+
 
 
 {% endblock %}

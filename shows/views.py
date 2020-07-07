@@ -10,9 +10,13 @@ def home(request):
     return render(request, 'shows/home.html', context)
 
 def mode7(request):
-    weeks = [i for i in (range(20, current_week() + 1))]
-    urls = get_mode7_urls()
-    context = {'weeks': weeks, 'urls': urls}
+    # weeks = [i for i in (range(20, current_week() + 1))]
+    urls, week, filename = get_mode7_urls()
+    filename1 = filename[0]
+    print(filename1)
+    filename2 = filename[1]
+    print(filename2)
+    context = {'week': week, 'urls': urls, 'filename1': filename1, 'filename2': filename2}
     return render(request, 'shows/mode7.html', context)
 
 def goldsoundz(request):
