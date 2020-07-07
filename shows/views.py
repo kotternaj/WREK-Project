@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .shows_dict import shows
 from .current_week import current_week
 from .upload import upload_to_gcs
+from .get_show_url import list_blobs, get_mode7_urls
 
 def home(request):
     context = {'shows': shows}
@@ -10,7 +11,8 @@ def home(request):
 
 def mode7(request):
     weeks = [i for i in (range(20, current_week() + 1))]
-    context = {'weeks': weeks}
+    urls = get_mode7_urls()
+    context = {'weeks': weeks, 'urls': urls}
     return render(request, 'shows/mode7.html', context)
 
 def goldsoundz(request):
