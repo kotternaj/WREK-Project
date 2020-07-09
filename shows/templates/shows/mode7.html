@@ -4,11 +4,13 @@
 <h2>MODE 7 PAGE</h2>
 
 
-<p>{{ week }}:
-  <a href="{{ url1 }}" src="{{ url1 }}">{{ filename1 }}</a>
-  <a href="{{ url2 }}" src="{{ url2 }}">{{ filename2 }}</a>  
-</p>
+<!-- <p>WEEK {{ week }}:
+  <a href="{{ url1 }}" src="{{ url1 }}">{{ mp3_00 }}</a>
+  <a href="{{ url2 }}" src="{{ url2 }}">{{ mp3_30 }}</a>
+</p> -->
+{% for week in weeks %}
+<p>WEEK {{ week }}: </p><a href="{{ urls }}" src="{{ urls }}">{{ mp3s }}></a>
 
-
+{% endfor %}
 
 {% endblock %}
