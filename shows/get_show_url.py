@@ -10,38 +10,42 @@ def list_blobs(bucket_name):
     public_urls = []
 
     for blob in blobs:
-        public_urls.append(blob.public_url)    
+        public_urls.append(blob.public_url)
     return(public_urls)
 
 def find_show_url(showname):
     public_urls = list_blobs('wrek-01')
-    print(public_urls)
+    # print(public_urls)
     show_urls = []
     filename = []
     file = []
-    weeks = []
+    weeks = set()
+    test_dict = {}
+
     for url in public_urls:
-        filepath  = os.path.join(url)
+        filepath = os.path.join(url)
         filepath = os.path.normpath(filepath)
 
         filepath = filepath.split(os.sep)
 
         del filepath[0:3] #/<showname>/<week>/<mp3>
-
+        week = filepath[1]
         file = filepath[2] #ex. Sun1800.mp3
 
         if filepath[0] == showname:
-            print('show name DOES match show name in URL')
             show_urls.append(url)
-            weeks.append(filepath[1]) # grab week number
+            for x in show_urls:
+                test_dict.update({week : (x)})
+            # print('show name DOES match show name in URL')
+            # show_urls.append(url)
+            # weeks.add(filepath[1]) # grab week number
             filename.append(file)
         else:
-            print('show name does NOT match')
-
-    print(show_urls)
-
-
-    return(show_urls, weeks, filename)
+            pass
+        # print(test_dict)
+    # print(weeks)
+    return(test_dict.items(), filename)
+    # return(show_urls, weeks, filename)
         # upload_file_path = os.path.join(*filepath).replace("\\","/")
 
 
