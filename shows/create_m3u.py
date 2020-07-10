@@ -12,16 +12,18 @@ def create_m3u(urls, filepath):
     base = os.path.splitext(filename)[0]
     os.rename(filename, base + '.m3u')
     filename = os.path.join(current_path, 'playlist.m3u')
-
+    head_tail = os.path.split(filename)
+    file = head_tail[1]
     current_path = os.path.normpath(current_path)
+    print(current_path)
+    temp_path = current_path.split(os.sep)
 
-    upload_path = current_path.split(os.sep)
-
-    del upload_path[0:3] #/<showname>/<week>/<mp3>
+    del temp_path[0:7] #/<showname>/<week>/<mp3>
+    upload_path = os.path.join(*temp_path).replace("\\","/")
     print(upload_path)
-    print(filename)
-    return(upload_path, filename)
-    
+    print(file)
+    return(upload_path, file)
+
 if __name__ == '__main__':
     test = ['https://storage.googleapis.com/wrek-01/Goldsoundz/28/Tue1800.mp3',
                'https://storage.googleapis.com/wrek-01/Goldsoundz/28/Tue1830.mp3']
