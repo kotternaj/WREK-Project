@@ -4,10 +4,10 @@
 <h2>MODE 7 PAGE</h2>
 
 <p>{{ url_dict }}</p>
-{% for key, value in url_dict %}
+{% for key, value in url_dict.iteritems() %}
 
 <p>Week {{ key }}:
-<a href="{{ value }}" src="{{ value }}">{{ value }} {{ value }}</a></p>
+<a href="{{ value }}" src="{{ value }}">({{ value[1] }})</a></p>
 {% endfor %}
 <!-- {% for week in weeks %}
 <p>WEEK {{ week }}: </p>
