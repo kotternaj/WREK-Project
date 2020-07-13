@@ -6,6 +6,8 @@ import os, time
 from shows_dict import shows
 from download import download
 from current_week import current_week
+from get_show_url import find_show_url
+from create_m3u import create_m3u
 
 def main():
     for show in shows:
@@ -29,7 +31,7 @@ def main():
                     sep_urls = urlparse(urls)
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
-
+                    upload_to_gcs(create_m3u(find_show_url(show_name)))
 
 if __name__ == '__main__':
     main()
