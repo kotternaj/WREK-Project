@@ -1,6 +1,6 @@
 import os
 from google.cloud import storage
-from create_m3u import create_m3u
+
 
 def upload_to_gcs(filepath, file):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/JSON/WREK-01.json" #Set gloud credentials.
@@ -16,4 +16,4 @@ def upload_to_gcs(filepath, file):
     # m3u = create_m3u(mp3_urls, filepath)
 
 if __name__ == '__main__':
-    upload_to_gcs('Mode7/29', 'playlist.m3u')
+    upload_to_gcs('Mode7/30', 'playlist.m3u')

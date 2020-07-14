@@ -2,7 +2,7 @@ from urllib.parse import urlsplit, urlparse
 import urllib
 import urllib.request
 import os, time
-# import datetime
+from upload import upload_to_gcs
 from shows_dict import shows
 from download import download
 from current_week import current_week
@@ -13,7 +13,7 @@ def main():
     for show in shows:
         show_name = str(show)
         url = shows[show]
-        week = str(current_week())
+        week = str(current_week()+1)
         save_path = "C:/Users/Owner/Projects/wrek-project/shows/show_data"
         complete_path = os.path.join(save_path, show_name, week)
 
@@ -31,7 +31,7 @@ def main():
                     sep_urls = urlparse(urls)
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
-                    upload_to_gcs(create_m3u(find_show_url(show_name)))
+    upload_to_gcs(create_m3u(find_show_url(show_name)))
 
 if __name__ == '__main__':
     main()

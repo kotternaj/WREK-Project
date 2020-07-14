@@ -3,11 +3,11 @@
 
 <h2>MODE 7 PAGE</h2>
 
-<p>{{ url_dict }}</p>
-{% for key, value in url_dict.iteritems() %}
+<!-- <p>{{ playlist_links }}</p> -->
+{% for week, link in playlist_links %}
 
-<p>Week {{ key }}:
-<a href="{{ value }}" src="{{ value }}">({{ value[1] }})</a></p>
+<p>Week {{ week }}:
+<a href="{{ link }}" src="{{ link }}">({{ link }})</a></p>
 {% endfor %}
 <!-- {% for week in weeks %}
 <p>WEEK {{ week }}: </p>
