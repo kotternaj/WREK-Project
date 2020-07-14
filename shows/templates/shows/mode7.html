@@ -7,12 +7,7 @@
 {% for week, link in playlist_links %}
 
 <p>Week {{ week }}:
-<a href="{{ link }}" src="{{ link }}">({{ link }})</a></p>
+<a href="{{ link }}" src="{{ link }}">Click here to download playlist</a></p>
 {% endfor %}
-<!-- {% for week in weeks %}
-<p>WEEK {{ week }}: </p>
-   {% for url in urls %}<a href="{{ urls }}" src="{{ urls }}">{{ mp3s }}></a>
-   {% endfor %}
-{% endfor %} -->
 
 {% endblock %}
