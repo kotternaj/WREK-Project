@@ -11,10 +11,10 @@ def home(request):
 
 def mode7(request):
     playlist_links = get_m3u_link('Mode7')
-    context = {'playlist_links': playlist_links }    
+    context = {'playlist_links': playlist_links }
     return render(request, 'shows/mode7.html', context)
 
 def goldsoundz(request):
-    weeks = [i for i in (range(20, current_week() + 1))]
-    context = {'weeks': weeks }
+    playlist_links = get_m3u_link('Goldsoundz')
+    context = {'playlist_links': playlist_links }
     return render(request, 'shows/goldsoundz.html', context)

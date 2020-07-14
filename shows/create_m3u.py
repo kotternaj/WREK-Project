@@ -2,8 +2,11 @@ import os
 
 def create_m3u(urls, filepath):
     save_path = "C:/Users/Owner/Projects/wrek-project/shows/show_data/"
+    print("Save path is: ", save_path)
     current_path = os.path.join(save_path, filepath)
+    print("Current path is now: ", current_path)
     os.chdir(current_path)
+    print("We changed dir into the cwd, which is: ", os.getcwd())
     print("Creating M3U file...")
     with open("playlist.txt", "a") as f:
         for url in urls: f.write(url + '\n')
@@ -23,9 +26,3 @@ def create_m3u(urls, filepath):
     print(upload_path)
     print(file)
     return(upload_path, file)
-
-if __name__ == '__main__':
-    test = ['https://storage.googleapis.com/wrek-01/Goldsoundz/28/Tue1800.mp3',
-               'https://storage.googleapis.com/wrek-01/Goldsoundz/28/Tue1830.mp3']
-    path = 'Goldsoundz/28'
-    create_m3u(test, path)
