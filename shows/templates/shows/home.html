@@ -3,13 +3,14 @@
 
 <div class="container">
   {% for show in shows %}
-  <div>
+
     <ul>
       <li><a href="/{{ show }}"</a>{{ show }}</li>
     </ul>
-  </div>
+  
+  {% endfor %}
 </div>
 
 
-{% endfor %}
+
 {% endblock %}

@@ -3,11 +3,12 @@
 
 <h2>MODE 7 PAGE</h2>
 
-<!-- <p>{{ playlist_links }}</p> -->
+
 {% for week, link in playlist_links %}
 
 <p>Week {{ week }}:
-<a href="{{ link }}" src="{{ link }}">Click here to download playlist</a></p>
+<a href="{{ link }}" src="{{ link }}">Download playlist</a></p>
+
 {% endfor %}
 
 {% endblock %}
