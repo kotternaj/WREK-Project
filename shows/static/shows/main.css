@@ -8,7 +8,7 @@
 }
 
 .container_24 {
-  margin-left: auto;
+  margin-left: 360px;
   margin-right: auto;
   width: 960px;
   /* background: #ebf0ec; */
@@ -18,7 +18,7 @@
     font-style: italic;
     line-height: 15px;
     font-size: 25px;
-    margin-top: 60px;
+    margin-top: 45px;
     text-shadow: 1px 1px #eee;
 }
 
@@ -29,7 +29,7 @@
   display: inline;
     float: right;
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 100px;
 }
 
 @import "compass/css3";

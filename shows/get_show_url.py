@@ -29,7 +29,7 @@ def find_show_url(showname):
         week = filepath[1]
         file = filepath[2] #ex. Sun1800.mp3
 
-        if filepath[0] == showname and week == str(current_week()-1):
+        if filepath[0] == showname and week == str(current_week()):
             local_path = str(filepath[0] + '/' + filepath[1])
             show_urls.append(url)
         else:

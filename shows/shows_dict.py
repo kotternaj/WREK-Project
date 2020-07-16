@@ -5,7 +5,7 @@ shows = {'mode7':'https://www.wrek.org/playlist.php/main/24kbs/current/MODE.m3u'
          'crash' : '',
          'battleground' : '',
          'no!': '',
-         'shillelagh Law' : '',
+         'shillelagh law' : '',
          'mobius' : '',
          'slow riot' : '',
          'cut and paste': '',

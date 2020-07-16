@@ -1,13 +1,17 @@
 {% extends "shows/base.html" %}
 {% block content %}
 
-<h2>Goldsoundz Page</h2>
+<div class="container">
+  <img src="https://www.wrek.org/wp-content/themes/wrek/images/ss_banners/GS.png"
+       height="120" width="590" alt="goldsoundz">
+  {% for week, link in playlist_links %}
 
-<!-- <p>{{ playlist_links }}</p> -->
-{% for week, link in playlist_links %}
+    <ul>
+      <li><p>Week {{ week }}:
+      <a href="{{ link }}" src="{{ link }}">Download playlist</a></p></li>
+    </ul>
 
-<p>Week {{ week }}:
-<a href="{{ link }}" src="{{ link }}">Click here to download playlist</a></p>
-{% endfor %}
+  {% endfor %}
+</div>
 
 {% endblock %}

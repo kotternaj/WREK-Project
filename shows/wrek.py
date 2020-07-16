@@ -13,7 +13,7 @@ def main():
     for show in shows:
         show_name = str(show)
         url = shows[show]
-        week = str(current_week()-1)
+        week = str(current_week())
         save_path = "C:/Users/Owner/Projects/wrek-project/shows/show_data"
         complete_path = os.path.join(save_path, show_name, week)
 

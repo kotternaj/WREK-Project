@@ -1,14 +1,25 @@
 {% extends "shows/base.html" %}
+
 {% block content %}
 
-<h2>MODE 7 PAGE</h2>
+<div class="container">
+  <!-- <h3>previous shows</h3> -->
+  <img src="https://www.wrek.org/wp-content/themes/wrek/images/ss_banners/MODE.png"
+       height="120" width="590" alt="mode7">
+  {% for week, link in playlist_links %}
 
+    <ul>
+      <li><p>Week {{ week }}:
+      <a href="{{ link }}" src="{{ link }}">Download playlist</a></p></li>
+    </ul>
 
-{% for week, link in playlist_links %}
+  {% endfor %}
+</div>
+<!-- {% for week, link in playlist_links %}
 
 <p>Week {{ week }}:
 <a href="{{ link }}" src="{{ link }}">Download playlist</a></p>
 
-{% endfor %}
+{% endfor %} -->
 
 {% endblock %}
