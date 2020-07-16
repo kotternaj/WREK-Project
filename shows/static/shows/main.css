@@ -1,0 +1,79 @@
+
+#header {
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  color: #323031;
+  padding: 20px 0;
+  border-bottom: 1px #DBDDDE solid;
+  background-color: #fff;
+}
+
+.container_24 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  /* background: #ebf0ec; */
+}
+
+#tagline {
+    font-style: italic;
+    line-height: 15px;
+    font-size: 25px;
+    margin-top: 60px;
+    text-shadow: 1px 1px #eee;
+}
+
+.container_24 .grid_5 {
+    /* width: 190px; */
+}
+.grid_5 {
+  display: inline;
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@import "compass/css3";
+
+.container {
+  width: 300px;
+  margin: 30px 0px 0px 350px;
+}
+
+h3 {
+  font: 400 30px/1.5 Georgia, Times, 'Times New Roman', serif;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font: 200 20px/1.5 Georgia, Times, 'Times New Roman', serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+  width: 200px;
+}
+
+li a:hover {
+  font-size: 25px;
+  background: #f6f6f6;
+}

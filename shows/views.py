@@ -10,7 +10,7 @@ def home(request):
     return render(request, 'shows/home.html', context)
 
 def mode7(request):
-    playlist_links = get_m3u_link('Mode7')
+    playlist_links = get_m3u_link('mode7')
     context = {'playlist_links': playlist_links }
     return render(request, 'shows/mode7.html', context)
 

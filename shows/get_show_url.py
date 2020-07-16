@@ -56,9 +56,10 @@ def get_m3u_link(showname):
         if file == 'playlist.m3u':
             if filepath[0] == showname:
                 m3u_dict.update({ week: url })
+    print(m3u_dict)
     return(m3u_dict.items())
 
     # print(two_urls)
 
 if __name__ == '__main__':
-    find_show_url('Mode7')
+    get_m3u_link('mode7')

@@ -1,13 +1,25 @@
 {% extends "shows/base.html" %}
 {% block content %}
 
+<div id="header">
+	<div class="container_24">
+		<a href="https://www.wrek.org/" class="grid_4" id="logo">
+			<img src="https://www.wrek.org/wp-content/themes/wrek/images/logo.png" alt="WREK Atlanta, 91.1 FM">
+		</a>
+      <div class="grid_5" id="tagline">welcome to the 91.1 FM WREK show archives
+      </div>
+  </div>
+</div>
+
+
 <div class="container">
+  <h3>archived shows</h3>
   {% for show in shows %}
 
     <ul>
       <li><a href="/{{ show }}"</a>{{ show }}</li>
     </ul>
-  
+
   {% endfor %}
 </div>
 
