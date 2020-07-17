@@ -3,8 +3,7 @@ import os
 from .current_week import current_week
 from .create_m3u import create_m3u
 from .upload import upload_to_gcs
-
-bucket_url: 'https://storage.googleapis.com/wrek-01/'
+from .split_url import split_url
 
 def list_blobs(bucket_name):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/JSON/WREK-01.json"
@@ -21,45 +20,18 @@ def find_show_url(showname):
     show_urls = []
 
     for url in public_urls:
-        filepath = os.path.join(url)
-        filepath = os.path.normpath(filepath)
-        filepath = filepath.split(os.sep)
-
-        del filepath[0:3] #/<showname>/<week>/<mp3>
-        week = filepath[1]
-        file = filepath[2] #ex. Sun1800.mp3
+        filepath, week, file = split_url(url)
+        # filepath = os.path.join(url)
+        # filepath = os.path.normpath(filepath)
+        # filepath = filepath.split(os.sep)
+        # del filepath[0:3] #/<showname>/<week>/<mp3>
+        # week = filepath[1]
+        # file = filepath[2] #ex. Sun1800.mp3
 
         if filepath[0] == showname and week == str(current_week()):
             local_path = str(filepath[0] + '/' + filepath[1])
             show_urls.append(url)
         else:
-            # print('show name does NOT match')
             pass
     print(show_urls, local_path)
     return(show_urls, local_path)
-    # upload_to_gcs(create_m3u(show_urls, local_path))
-
-
-def get_m3u_link(showname):
-    m3u_dict = {}
-    bucket_contents = list_blobs('wrek-01')
-    # print(bucket_contents)
-    for url in bucket_contents:
-        filepath = os.path.join(url)
-        filepath = os.path.normpath(filepath)
-        filepath = filepath.split(os.sep)
-
-        del filepath[0:3] #/<showname>/<week>/<mp3>
-        print(filepath)
-        week = filepath[1]
-        file = filepath[2] #ex. Sun1800.mp3
-        if file == 'playlist.m3u':
-            if filepath[0] == showname:
-                m3u_dict.update({ week: url })
-    print(m3u_dict)
-    return(m3u_dict.items())
-
-    # print(two_urls)
-
-if __name__ == '__main__':
-    get_m3u_link('mode7')

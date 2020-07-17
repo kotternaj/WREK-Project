@@ -3,7 +3,7 @@
 
 <div class="container">
   <h3>previous shows</h3>
-  {% for show in shows %}
+  {% for show in shows|dictsort:"0.lower" %}
 
     <ul>
       <li><a href="/{{ show }}"</a>{{ show }}</li>

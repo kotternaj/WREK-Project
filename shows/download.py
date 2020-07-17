@@ -22,8 +22,8 @@ def download(urls, mp3_filename, complete_path):
         # and then join above items back into a path
         del filepath[0:7]
         upload_file_path = os.path.join(*filepath).replace("\\","/")
-
-        upload_to_gcs(upload_file_path, mp3_filename)
+        return(upload_file_path, mp3_filename)
+        
 
     except(ValueError):
         pass

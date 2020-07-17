@@ -31,6 +31,7 @@ def main():
                     sep_urls = urlparse(urls)
                     mp3_filename = os.path.basename(sep_urls[2])
                     download(urls, mp3_filename, complete_path)
+                    upload_to_gcs(upload_file_path, mp3_filename)
         show_urls, filepath = find_show_url(show_name)
         local_path, m3u_file = create_m3u(show_urls, filepath)
         upload_to_gcs(local_path, m3u_file)
