@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .shows_dict import shows
 from .current_week import current_week
 from .upload import upload_to_gcs
-from .get_show_url import get_m3u_link
+from .get_m3u_link import get_m3u_link
 
 def home(request):
     context = {'shows': shows}

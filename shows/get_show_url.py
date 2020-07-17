@@ -1,7 +1,6 @@
 from google.cloud import storage
 import os
 from .current_week import current_week
-from .create_m3u import create_m3u
 from .upload import upload_to_gcs
 from .split_url import split_url
 
@@ -21,17 +20,9 @@ def find_show_url(showname):
 
     for url in public_urls:
         filepath, week, file = split_url(url)
-        # filepath = os.path.join(url)
-        # filepath = os.path.normpath(filepath)
-        # filepath = filepath.split(os.sep)
-        # del filepath[0:3] #/<showname>/<week>/<mp3>
-        # week = filepath[1]
-        # file = filepath[2] #ex. Sun1800.mp3
-
-        if filepath[0] == showname and week == str(current_week()):
+        if filepath[0] == showname and week == str(current_week()-2): # compare showname with all items in public_urls
             local_path = str(filepath[0] + '/' + filepath[1])
-            show_urls.append(url)
+            show_urls.append(url) # if they match append show_urls
         else:
             pass
-    print(show_urls, local_path)
     return(show_urls, local_path)
